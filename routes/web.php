@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\JenisBarangController;
+use App\Http\Controllers\BarangController;
 
 
 // Route::get('/', function () {
@@ -25,6 +26,12 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/jenisbarang/store', [JenisBarangController::class, 'store']);
     Route::post('/jenisbarang/update/{id}', [JenisBarangController::class, 'update']);
     Route::get('/jenisbarang/destroy/{id}', [JenisBarangController::class, 'destroy']);
+
+    //CRUD Barang
+    Route::get('/barang', [BarangController::class, 'index']);
+    Route::post('/barang/store', [BarangController::class, 'store']);
+    Route::post('/barang/update/{id}', [BarangController::class, 'update']);
+    Route::get('/barang/destroy/{id}', [BarangController::class, 'destroy']);
 
     Route::get('/', [HomeController::class, 'index']);
     Route::get('/home', [HomeController::class, 'index'])->name('home');
