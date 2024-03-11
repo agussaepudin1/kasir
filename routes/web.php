@@ -7,7 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\JenisBarangController;
 use App\Http\Controllers\BarangController;
-
+use App\Http\Controllers\DiskonController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -33,8 +33,15 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/barang/update/{id}', [BarangController::class, 'update']);
     Route::get('/barang/destroy/{id}', [BarangController::class, 'destroy']);
 
+    //CRUD Setting Diskon
+    Route::get('/setdiskon', [DiskonController::class, 'index']);
+    Route::post('/setdiskon/update/{id}', [DiskonController::class, 'update']);
+
     Route::get('/', [HomeController::class, 'index']);
     Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+    Route::get('/profile', [UserController::class, 'profile']);
+    Route::post('/profile/updateprofile/{id}', [UserController::class, 'updateprofile']);
 });
 
 Auth::routes();
